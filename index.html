@@ -22,17 +22,17 @@
         .container {
             max-width: 700px;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 0.75rem;
         }
 
         .header {
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             text-align: center;
-            padding: 2rem 0;
+            padding: 1rem 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
         .header-title {
@@ -40,14 +40,14 @@
         }
 
         .header h1 {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             color: #185FA5;
         }
 
         .header p {
-            font-size: 14px;
+            font-size: 12px;
             color: #666;
         }
 
@@ -55,9 +55,9 @@
             background: linear-gradient(135deg, #639922, #85B7EB);
             color: white;
             border: none;
-            border-radius: 8px;
-            padding: 0.75rem 1.25rem;
-            font-size: 14px;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+            font-size: 13px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s;
@@ -70,20 +70,20 @@
 
         .day-selector {
             display: flex;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
+            gap: 0.3rem;
+            margin-bottom: 1rem;
             overflow-x: auto;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.3rem;
             scroll-behavior: smooth;
         }
 
         .day-btn {
-            padding: 0.75rem 1.25rem;
+            padding: 0.6rem 0.95rem;
             border: 0.5px solid #ddd;
             background: white;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             white-space: nowrap;
             transition: all 0.2s;
@@ -104,24 +104,31 @@
         .workout-card {
             background: white;
             border: 0.5px solid #ddd;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .workout-day-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.75rem;
             color: #1a1a1a;
             border-bottom: 2px solid #378ADD;
-            padding-bottom: 1rem;
+            padding-bottom: 0.75rem;
+        }
+
+        .workout-focus {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
         }
 
         .exercise-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
             border-bottom: 0.5px solid #eee;
         }
 
@@ -133,23 +140,23 @@
 
         .exercise-name {
             font-weight: 600;
-            font-size: 15px;
-            margin-bottom: 0.75rem;
+            font-size: 14px;
+            margin-bottom: 0.4rem;
             color: #1a1a1a;
         }
 
         .exercise-meta {
-            font-size: 13px;
+            font-size: 12px;
             color: #666;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             font-style: italic;
         }
 
         .set-input-group {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
+            gap: 0.6rem;
+            margin-bottom: 0.6rem;
         }
 
         .input-wrapper {
@@ -158,17 +165,17 @@
         }
 
         .input-wrapper label {
-            font-size: 12px;
+            font-size: 11px;
             color: #666;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
             font-weight: 500;
         }
 
         .input-wrapper input {
-            padding: 0.5rem;
+            padding: 0.45rem;
             border: 0.5px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
+            border-radius: 5px;
+            font-size: 13px;
             background: #f9f8f5;
             color: #1a1a1a;
             transition: all 0.2s;
@@ -185,13 +192,13 @@
             background: linear-gradient(135deg, #185FA5, #378ADD);
             color: white;
             border: none;
-            border-radius: 6px;
-            padding: 0.75rem 1.5rem;
-            font-size: 14px;
+            border-radius: 5px;
+            padding: 0.6rem 1.2rem;
+            font-size: 13px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s;
-            margin-top: 1.35rem;
+            margin-top: 1rem;
         }
 
         .log-btn:hover, .save-btn:hover {
@@ -207,10 +214,10 @@
         .set-logged {
             background: rgba(31, 158, 117, 0.1);
             border: 0.5px solid #1f9e75;
-            padding: 0.75rem;
-            border-radius: 6px;
-            font-size: 13px;
-            margin-bottom: 0.75rem;
+            padding: 0.6rem;
+            border-radius: 5px;
+            font-size: 12px;
+            margin-bottom: 0.6rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -232,29 +239,29 @@
         .stats-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
             border-top: 0.5px solid #ddd;
         }
 
         .stat-card {
             background: linear-gradient(135deg, rgba(24, 95, 165, 0.08), rgba(55, 138, 221, 0.08));
             border: 0.5px solid #378ADD;
-            border-radius: 12px;
-            padding: 1rem;
+            border-radius: 10px;
+            padding: 0.9rem;
             text-align: center;
         }
 
         .stat-number {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 600;
             color: #185FA5;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.2rem;
         }
 
         .stat-label {
-            font-size: 12px;
+            font-size: 11px;
             color: #666;
             font-weight: 500;
         }
@@ -263,20 +270,20 @@
             background: rgba(31, 158, 117, 0.1);
             border: 0.5px solid #1f9e75;
             border-radius: 8px;
-            padding: 1.25rem;
-            margin-top: 1.5rem;
-            font-size: 14px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 13px;
             color: #0f6e56;
             text-align: center;
             font-weight: 500;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .footer {
             text-align: center;
-            margin-top: 3rem;
-            padding-bottom: 2rem;
-            font-size: 12px;
+            margin-top: 1.5rem;
+            padding-bottom: 1rem;
+            font-size: 11px;
             color: #999;
         }
 
@@ -284,16 +291,16 @@
         .edit-mode {
             background: rgba(255, 193, 7, 0.1);
             border: 2px dashed #FFA500;
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
         }
 
         .edit-mode-header {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: #FF6B00;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -302,25 +309,25 @@
         .edit-exercise {
             background: white;
             border: 0.5px solid #ddd;
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 1rem;
+            border-radius: 6px;
+            padding: 0.9rem;
+            margin-bottom: 0.8rem;
         }
 
         .edit-exercise input {
             width: 100%;
-            padding: 0.5rem;
-            margin-bottom: 0.75rem;
+            padding: 0.45rem;
+            margin-bottom: 0.6rem;
             border: 0.5px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
+            border-radius: 5px;
+            font-size: 13px;
         }
 
         .edit-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.5rem;
-            margin-bottom: 0.75rem;
+            gap: 0.4rem;
+            margin-bottom: 0.6rem;
         }
 
         .edit-row input {
@@ -331,12 +338,12 @@
             background: #a22a2a;
             color: white;
             border: none;
-            border-radius: 6px;
-            padding: 0.5rem 1rem;
-            font-size: 12px;
+            border-radius: 5px;
+            padding: 0.4rem 0.8rem;
+            font-size: 11px;
             cursor: pointer;
             width: 100%;
-            margin-top: 0.5rem;
+            margin-top: 0.4rem;
         }
 
         .delete-exercise-btn:hover {
@@ -347,13 +354,13 @@
             background: linear-gradient(135deg, #639922, #85B7EB);
             color: white;
             border: none;
-            border-radius: 8px;
-            padding: 1rem;
-            font-size: 15px;
+            border-radius: 6px;
+            padding: 0.9rem;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            margin-bottom: 1rem;
+            margin-bottom: 0.6rem;
         }
 
         .save-changes-btn:hover {
@@ -364,21 +371,28 @@
             background: #999;
             color: white;
             border: none;
-            border-radius: 8px;
-            padding: 0.75rem;
-            font-size: 14px;
+            border-radius: 6px;
+            padding: 0.6rem;
+            font-size: 13px;
             cursor: pointer;
             width: 100%;
+        }
+
+        .edit-day-title {
+            font-size: 14px;
+            color: #185FA5;
+            margin: 1rem 0 0.75rem 0;
+            font-weight: 600;
         }
 
         @media (max-width: 480px) {
             .header {
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 0.4rem;
             }
 
             .header h1 {
-                font-size: 24px;
+                font-size: 22px;
             }
 
             .edit-btn {
@@ -394,12 +408,12 @@
             }
 
             .day-selector {
-                gap: 0.25rem;
+                gap: 0.2rem;
             }
 
             .day-btn {
-                padding: 0.65rem 1rem;
-                font-size: 13px;
+                padding: 0.5rem 0.8rem;
+                font-size: 12px;
             }
         }
     </style>
@@ -408,10 +422,10 @@
     <div class="container">
         <div class="header">
             <div class="header-title">
-                <h1>💪 Muscle Build Tracker</h1>
-                <p>5-Day Beginner Workout Program</p>
+                <h1>💪 Tracker</h1>
+                <p>Muscle Build Program</p>
             </div>
-            <button class="edit-btn" onclick="tracker.toggleEditMode()">✏️ Edit Plan</button>
+            <button class="edit-btn" onclick="tracker.toggleEditMode()">✏️ Edit</button>
         </div>
 
         <div id="editModeSection"></div>
@@ -423,21 +437,21 @@
         <div id="statsContent"></div>
 
         <div class="footer">
-            <p>💡 Tip: Rest 60-90 sec between heavy sets, 45-60 sec for isolation work</p>
+            <p>💡 Rest: 60-90 sec heavy sets | 45-60 sec isolation</p>
         </div>
     </div>
 
     <script>
         const defaultWorkoutPlan = {
             "Day 1": {
-                title: "Upper Body - Push Focus",
+                title: "Upper Body - Push",
                 focus: "Chest, shoulders, triceps",
                 exercises: [
-                    { name: "Barbell Bench Press", sets: 3, reps: "6–8", desc: "Main lift—moderate weight, solid form" },
-                    { name: "Incline Dumbbell Press", sets: 3, reps: "8–10", desc: "Hits upper chest" },
-                    { name: "Shoulder Press", sets: 3, reps: "8–10", desc: "Builds shoulder strength" },
-                    { name: "Lateral Raises", sets: 3, reps: "10–12", desc: "Shoulder definition" },
-                    { name: "Tricep Dips", sets: 3, reps: "8–10", desc: "Machine or assisted" },
+                    { name: "Barbell Bench Press", sets: 3, reps: "6–8", desc: "Main lift" },
+                    { name: "Incline Dumbbell Press", sets: 3, reps: "8–10", desc: "Upper chest" },
+                    { name: "Shoulder Press", sets: 3, reps: "8–10", desc: "Shoulders" },
+                    { name: "Lateral Raises", sets: 3, reps: "10–12", desc: "Shoulder def" },
+                    { name: "Tricep Dips", sets: 3, reps: "8–10", desc: "Machine/assist" },
                     { name: "Tricep Pushdowns", sets: 2, reps: "10–12", desc: "Finisher" }
                 ]
             },
@@ -445,47 +459,47 @@
                 title: "Lower Body",
                 focus: "Quads, glutes, hamstrings, calves",
                 exercises: [
-                    { name: "Barbell Back Squat", sets: 3, reps: "6–8", desc: "Or leg press if new" },
-                    { name: "Romanian Deadlifts", sets: 3, reps: "8–10", desc: "Hamstring + glute focus" },
-                    { name: "Leg Press", sets: 3, reps: "8–10", desc: "Secondary quad work" },
-                    { name: "Leg Curls", sets: 3, reps: "10–12", desc: "Isolate hamstrings" },
-                    { name: "Calf Raises", sets: 3, reps: "12–15", desc: "Build calf size" },
-                    { name: "Leg Extensions", sets: 2, reps: "12–15", desc: "Optional finisher" }
+                    { name: "Barbell Back Squat", sets: 3, reps: "6–8", desc: "Main lift" },
+                    { name: "Romanian Deadlifts", sets: 3, reps: "8–10", desc: "Hamstring" },
+                    { name: "Leg Press", sets: 3, reps: "8–10", desc: "Quad work" },
+                    { name: "Leg Curls", sets: 3, reps: "10–12", desc: "Hamstrings" },
+                    { name: "Calf Raises", sets: 3, reps: "12–15", desc: "Calves" },
+                    { name: "Leg Extensions", sets: 2, reps: "12–15", desc: "Finisher" }
                 ]
             },
             "Day 3": {
-                title: "Upper Body - Pull Focus",
+                title: "Upper Body - Pull",
                 focus: "Back, biceps, rear delts",
                 exercises: [
-                    { name: "Barbell Rows", sets: 3, reps: "6–8", desc: "Main back lift" },
-                    { name: "Assisted Pull-Ups", sets: 3, reps: "6–10", desc: "Back width & strength" },
-                    { name: "Bent-Over Rows", sets: 3, reps: "8–10", desc: "Secondary back work" },
-                    { name: "Face Pulls", sets: 3, reps: "12–15", desc: "Rear delts + shoulder health" },
-                    { name: "Barbell Curls", sets: 3, reps: "8–10", desc: "Bicep strength" },
-                    { name: "Hammer Curls", sets: 2, reps: "10–12", desc: "Bicep volume" }
+                    { name: "Barbell Rows", sets: 3, reps: "6–8", desc: "Main back" },
+                    { name: "Assisted Pull-Ups", sets: 3, reps: "6–10", desc: "Back width" },
+                    { name: "Bent-Over Rows", sets: 3, reps: "8–10", desc: "Back" },
+                    { name: "Face Pulls", sets: 3, reps: "12–15", desc: "Rear delts" },
+                    { name: "Barbell Curls", sets: 3, reps: "8–10", desc: "Biceps" },
+                    { name: "Hammer Curls", sets: 2, reps: "10–12", desc: "Biceps" }
                 ]
             },
             "Day 4": {
-                title: "Lower Body (Variation)",
-                focus: "Different angles for all lower body areas",
+                title: "Lower Body (Var)",
+                focus: "Different angles",
                 exercises: [
-                    { name: "Deadlifts", sets: 3, reps: "5–6", desc: "Heavy compound lift" },
-                    { name: "Bulgarian Split Squats", sets: 3, reps: "8–10 per leg", desc: "Unilateral strength + glute" },
-                    { name: "Leg Press", sets: 3, reps: "8–10", desc: "Volume for quads" },
-                    { name: "Leg Curls", sets: 3, reps: "10–12", desc: "Hamstring isolation" },
-                    { name: "Seated Calf Raises", sets: 3, reps: "12–15", desc: "Different calf angle" }
+                    { name: "Deadlifts", sets: 3, reps: "5–6", desc: "Heavy" },
+                    { name: "Bulgarian Split Squats", sets: 3, reps: "8–10", desc: "Glute" },
+                    { name: "Leg Press", sets: 3, reps: "8–10", desc: "Volume" },
+                    { name: "Leg Curls", sets: 3, reps: "10–12", desc: "Isolation" },
+                    { name: "Seated Calf Raises", sets: 3, reps: "12–15", desc: "Angle" }
                 ]
             },
             "Day 5": {
-                title: "Full Body / Functional",
-                focus: "Lighter intensity, full-body engagement",
+                title: "Full Body",
+                focus: "Lighter, functional",
                 exercises: [
-                    { name: "Goblet Squats", sets: 3, reps: "10–12", desc: "Functional movement" },
-                    { name: "Push-Ups", sets: 3, reps: "10–15", desc: "Upper body endurance" },
-                    { name: "Dumbbell Rows", sets: 3, reps: "10–12", desc: "Back + functional strength" },
-                    { name: "Planks or Ab Wheel", sets: 3, reps: "30–60 sec / 8–12", desc: "Core strength" },
-                    { name: "Dumbbell Step-Ups", sets: 3, reps: "10–12 per leg", desc: "Functional leg work" },
-                    { name: "Light Cardio Finisher", sets: 1, reps: "10 min", desc: "Bike, rowing, or incline walk" }
+                    { name: "Goblet Squats", sets: 3, reps: "10–12", desc: "Functional" },
+                    { name: "Push-Ups", sets: 3, reps: "10–15", desc: "Endurance" },
+                    { name: "Dumbbell Rows", sets: 3, reps: "10–12", desc: "Strength" },
+                    { name: "Planks", sets: 3, reps: "30–60s", desc: "Core" },
+                    { name: "Dumbbell Step-Ups", sets: 3, reps: "10–12", desc: "Legs" },
+                    { name: "Light Cardio", sets: 1, reps: "10 min", desc: "Finisher" }
                 ]
             }
         };
@@ -521,32 +535,32 @@
 
                 let html = `<div class="edit-mode">
                     <div class="edit-mode-header">
-                        ✏️ Edit Workout Plan
-                        <button class="cancel-edit-btn" style="width: auto; padding: 0.5rem 1rem; background: #999;" onclick="tracker.toggleEditMode()">✕ Close</button>
+                        ✏️ Edit Workout
+                        <button class="cancel-edit-btn" style="width: auto; padding: 0.4rem 0.8rem; background: #999; font-size: 12px;" onclick="tracker.toggleEditMode()">✕</button>
                     </div>`;
 
                 Object.keys(this.workoutPlan).forEach(day => {
                     const workout = this.workoutPlan[day];
-                    html += `<h3 style="margin: 1.5rem 0 1rem 0; color: #185FA5; font-size: 16px;">${day}: ${workout.title}</h3>`;
+                    html += `<h3 class="edit-day-title">${day}: ${workout.title}</h3>`;
 
                     workout.exercises.forEach((ex, idx) => {
                         html += `
                             <div class="edit-exercise">
-                                <label style="font-size: 12px; color: #666; font-weight: 600;">Exercise Name</label>
+                                <label style="font-size: 11px; color: #666; font-weight: 600;">Exercise</label>
                                 <input type="text" id="ex-name-${day}-${idx}" value="${ex.name}" />
                                 
                                 <div class="edit-row">
                                     <div>
-                                        <label style="font-size: 12px; color: #666; font-weight: 600;">Sets</label>
+                                        <label style="font-size: 11px; color: #666; font-weight: 600;">Sets</label>
                                         <input type="number" id="ex-sets-${day}-${idx}" value="${ex.sets}" />
                                     </div>
                                     <div>
-                                        <label style="font-size: 12px; color: #666; font-weight: 600;">Reps</label>
+                                        <label style="font-size: 11px; color: #666; font-weight: 600;">Reps</label>
                                         <input type="text" id="ex-reps-${day}-${idx}" value="${ex.reps}" />
                                     </div>
                                 </div>
 
-                                <label style="font-size: 12px; color: #666; font-weight: 600;">Description</label>
+                                <label style="font-size: 11px; color: #666; font-weight: 600;">Desc</label>
                                 <input type="text" id="ex-desc-${day}-${idx}" value="${ex.desc}" />
                             </div>
                         `;
@@ -554,7 +568,7 @@
                 });
 
                 html += `
-                    <button class="save-changes-btn" onclick="tracker.saveEditedPlan()">💾 Save Changes</button>
+                    <button class="save-changes-btn" onclick="tracker.saveEditedPlan()">💾 Save</button>
                     <button class="cancel-edit-btn" onclick="tracker.toggleEditMode()">Cancel</button>
                 </div>`;
 
@@ -574,7 +588,7 @@
                 localStorage.setItem("customWorkoutPlan", JSON.stringify(this.workoutPlan));
                 this.editMode = false;
                 this.init();
-                alert("✅ Workout plan updated!");
+                alert("✅ Updated!");
             }
 
             renderDaySelector() {
@@ -595,7 +609,7 @@
 
                 let html = `<div class="workout-card">
                     <div class="workout-day-title">${this.currentDay}: ${workout.title}</div>
-                    <p style="font-size: 13px; color: #666; margin-bottom: 1.5rem;">Focus: ${workout.focus}</p>`;
+                    <div class="workout-focus">Focus: ${workout.focus}</div>`;
 
                 workout.exercises.forEach((ex, exIdx) => {
                     const dayLogs = this.logs[this.currentDay] || {};
@@ -604,16 +618,16 @@
                     html += `
                         <div class="exercise-item">
                             <div class="exercise-name">${ex.name}</div>
-                            <div class="exercise-meta">${ex.sets} × ${ex.reps} reps — ${ex.desc}</div>
+                            <div class="exercise-meta">${ex.sets}x ${ex.reps} — ${ex.desc}</div>
                             ${exLogs.map((log, logIdx) => `
                                 <div class="set-logged">
-                                    <span>Set ${logIdx + 1}: ${log.weight} lbs × ${log.reps} reps</span>
+                                    <span>Set ${logIdx + 1}: ${log.weight}kg × ${log.reps}reps</span>
                                     <span class="delete-btn" onclick="tracker.deleteLog('${this.currentDay}', ${exIdx}, ${logIdx})">✕</span>
                                 </div>
                             `).join("")}
                             <div class="set-input-group">
                                 <div class="input-wrapper">
-                                    <label>Weight (lbs)</label>
+                                    <label>Weight (kg)</label>
                                     <input type="number" class="weight-${exIdx}" placeholder="0" />
                                 </div>
                                 <div class="input-wrapper">
@@ -622,7 +636,7 @@
                                 </div>
                                 <div class="input-wrapper">
                                     <label>&nbsp;</label>
-                                    <button class="log-btn" onclick="tracker.logSet('${this.currentDay}', ${exIdx})">Log Set</button>
+                                    <button class="log-btn" onclick="tracker.logSet('${this.currentDay}', ${exIdx})">Log</button>
                                 </div>
                             </div>
                         </div>
@@ -638,7 +652,7 @@
                 const reps = document.querySelector(`.reps-${exIdx}`).value;
 
                 if (!weight || !reps) {
-                    alert("Please enter weight and reps");
+                    alert("Enter weight and reps");
                     return;
                 }
 
@@ -676,13 +690,13 @@
                 });
 
                 const motivation = [
-                    "🔥 Every rep brings you closer to your goals!",
-                    "💪 You're building the body and strength you want!",
-                    "🎯 Consistency is key. Keep crushing it!",
-                    "😴 Rest and recovery matter just as much as training!",
-                    "⚡ You've got this! Progress takes time and effort!",
-                    "🌟 Strong is the new sexy. Keep pushing!",
-                    "🚀 Your future self will thank you for this effort!"
+                    "🔥 Every rep gets you closer!",
+                    "💪 Building strength, building you!",
+                    "🎯 Consistency is everything!",
+                    "😴 Rest matters. Sleep well!",
+                    "⚡ Keep pushing, you've got this!",
+                    "🌟 Strong is beautiful!",
+                    "🚀 Future you thanks present you!"
                 ];
 
                 stats.innerHTML = `
