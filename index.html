@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muscle Build Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f9f8f5 0%, #f0f0f0 100%);
+            color: #1a1a1a;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .header {
+            margin-bottom: 2rem;
+            text-align: center;
+            padding: 2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-title {
+            flex: 1;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #185FA5;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .edit-btn {
+            background: linear-gradient(135deg, #639922, #85B7EB);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.25rem;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .edit-btn:hover {
+            opacity: 0.9;
+        }
+
+        .day-selector {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            scroll-behavior: smooth;
+        }
+
+        .day-btn {
+            padding: 0.75rem 1.25rem;
+            border: 0.5px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s;
+            color: #666;
+        }
+
+        .day-btn:hover {
+            background: #f0f0f0;
+            border-color: #aaa;
+        }
+
+        .day-btn.active {
+            background: linear-gradient(135deg, #185FA5, #378ADD);
+            color: white;
+            border-color: #185FA5;
+        }
+
+        .workout-card {
+            background: white;
+            border: 0.5px solid #ddd;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .workout-day-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+            border-bottom: 2px solid #378ADD;
+            padding-bottom: 1rem;
+        }
+
+        .exercise-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 0.5px solid #eee;
+        }
+
+        .exercise-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .exercise-name {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 0.75rem;
+            color: #1a1a1a;
+        }
+
+        .exercise-meta {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .set-input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .input-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-wrapper label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+        }
+
+        .input-wrapper input {
+            padding: 0.5rem;
+            border: 0.5px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            background: #f9f8f5;
+            color: #1a1a1a;
+            transition: all 0.2s;
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: #378ADD;
+            background: white;
+            box-shadow: 0 0 0 2px rgba(55, 138, 221, 0.1);
+        }
+
+        .log-btn, .save-btn {
+            background: linear-gradient(135deg, #185FA5, #378ADD);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 0.75rem 1.5rem;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 1.35rem;
+        }
+
+        .log-btn:hover, .save-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(24, 95, 165, 0.3);
+        }
+
+        .log-btn:active, .save-btn:active {
+            transform: scale(0.98);
+        }
+
+        .set-logged {
+            background: rgba(31, 158, 117, 0.1);
+            border: 0.5px solid #1f9e75;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-bottom: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #0f6e56;
+            font-weight: 500;
+        }
+
+        .delete-btn {
+            cursor: pointer;
+            color: #a22a2a;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .delete-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 0.5px solid #ddd;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(24, 95, 165, 0.08), rgba(55, 138, 221, 0.08));
+            border: 0.5px solid #378ADD;
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 600;
+            color: #185FA5;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .motivation {
+            background: rgba(31, 158, 117, 0.1);
+            border: 0.5px solid #1f9e75;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-top: 1.5rem;
+            font-size: 14px;
+            color: #0f6e56;
+            text-align: center;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-bottom: 2rem;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Edit Mode Styles */
+        .edit-mode {
+            background: rgba(255, 193, 7, 0.1);
+            border: 2px dashed #FFA500;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .edit-mode-header {
+            font-size: 14px;
+            font-weight: 600;
+            color: #FF6B00;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .edit-exercise {
+            background: white;
+            border: 0.5px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .edit-exercise input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 0.75rem;
+            border: 0.5px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .edit-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .edit-row input {
+            margin-bottom: 0;
+        }
+
+        .delete-exercise-btn {
+            background: #a22a2a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            font-size: 12px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .delete-exercise-btn:hover {
+            opacity: 0.8;
+        }
+
+        .save-changes-btn {
+            background: linear-gradient(135deg, #639922, #85B7EB);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 1rem;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .save-changes-btn:hover {
+            opacity: 0.9;
+        }
+
+        .cancel-edit-btn {
+            background: #999;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem;
+            font-size: 14px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .edit-btn {
+                width: 100%;
+            }
+
+            .set-input-group {
+                grid-template-columns: 1fr;
+            }
+
+            .log-btn {
+                width: 100%;
+            }
+
+            .day-selector {
+                gap: 0.25rem;
+            }
+
+            .day-btn {
+                padding: 0.65rem 1rem;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-title">
+                <h1>💪 Muscle Build Tracker</h1>
+                <p>5-Day Beginner Workout Program</p>
+            </div>
+            <button class="edit-btn" onclick="tracker.toggleEditMode()">✏️ Edit Plan</button>
+        </div>
+
+        <div id="editModeSection"></div>
+
+        <div class="day-selector" id="daySelector"></div>
+
+        <div id="workoutContent"></div>
+
+        <div id="statsContent"></div>
+
+        <div class="footer">
+            <p>💡 Tip: Rest 60-90 sec between heavy sets, 45-60 sec for isolation work</p>
+        </div>
+    </div>
+
+    <script>
+        const defaultWorkoutPlan = {
+            "Day 1": {
+                title: "Upper Body - Push Focus",
+                focus: "Chest, shoulders, triceps",
+                exercises: [
+                    { name: "Barbell Bench Press", sets: 3, reps: "6–8", desc: "Main lift—moderate weight, solid form" },
+                    { name: "Incline Dumbbell Press", sets: 3, reps: "8–10", desc: "Hits upper chest" },
+                    { name: "Shoulder Press", sets: 3, reps: "8–10", desc: "Builds shoulder strength" },
+                    { name: "Lateral Raises", sets: 3, reps: "10–12", desc: "Shoulder definition" },
+                    { name: "Tricep Dips", sets: 3, reps: "8–10", desc: "Machine or assisted" },
+                    { name: "Tricep Pushdowns", sets: 2, reps: "10–12", desc: "Finisher" }
+                ]
+            },
+            "Day 2": {
+                title: "Lower Body",
+                focus: "Quads, glutes, hamstrings, calves",
+                exercises: [
+                    { name: "Barbell Back Squat", sets: 3, reps: "6–8", desc: "Or leg press if new" },
+                    { name: "Romanian Deadlifts", sets: 3, reps: "8–10", desc: "Hamstring + glute focus" },
+                    { name: "Leg Press", sets: 3, reps: "8–10", desc: "Secondary quad work" },
+                    { name: "Leg Curls", sets: 3, reps: "10–12", desc: "Isolate hamstrings" },
+                    { name: "Calf Raises", sets: 3, reps: "12–15", desc: "Build calf size" },
+                    { name: "Leg Extensions", sets: 2, reps: "12–15", desc: "Optional finisher" }
+                ]
+            },
+            "Day 3": {
+                title: "Upper Body - Pull Focus",
+                focus: "Back, biceps, rear delts",
+                exercises: [
+                    { name: "Barbell Rows", sets: 3, reps: "6–8", desc: "Main back lift" },
+                    { name: "Assisted Pull-Ups", sets: 3, reps: "6–10", desc: "Back width & strength" },
+                    { name: "Bent-Over Rows", sets: 3, reps: "8–10", desc: "Secondary back work" },
+                    { name: "Face Pulls", sets: 3, reps: "12–15", desc: "Rear delts + shoulder health" },
+                    { name: "Barbell Curls", sets: 3, reps: "8–10", desc: "Bicep strength" },
+                    { name: "Hammer Curls", sets: 2, reps: "10–12", desc: "Bicep volume" }
+                ]
+            },
+            "Day 4": {
+                title: "Lower Body (Variation)",
+                focus: "Different angles for all lower body areas",
+                exercises: [
+                    { name: "Deadlifts", sets: 3, reps: "5–6", desc: "Heavy compound lift" },
+                    { name: "Bulgarian Split Squats", sets: 3, reps: "8–10 per leg", desc: "Unilateral strength + glute" },
+                    { name: "Leg Press", sets: 3, reps: "8–10", desc: "Volume for quads" },
+                    { name: "Leg Curls", sets: 3, reps: "10–12", desc: "Hamstring isolation" },
+                    { name: "Seated Calf Raises", sets: 3, reps: "12–15", desc: "Different calf angle" }
+                ]
+            },
+            "Day 5": {
+                title: "Full Body / Functional",
+                focus: "Lighter intensity, full-body engagement",
+                exercises: [
+                    { name: "Goblet Squats", sets: 3, reps: "10–12", desc: "Functional movement" },
+                    { name: "Push-Ups", sets: 3, reps: "10–15", desc: "Upper body endurance" },
+                    { name: "Dumbbell Rows", sets: 3, reps: "10–12", desc: "Back + functional strength" },
+                    { name: "Planks or Ab Wheel", sets: 3, reps: "30–60 sec / 8–12", desc: "Core strength" },
+                    { name: "Dumbbell Step-Ups", sets: 3, reps: "10–12 per leg", desc: "Functional leg work" },
+                    { name: "Light Cardio Finisher", sets: 1, reps: "10 min", desc: "Bike, rowing, or incline walk" }
+                ]
+            }
+        };
+
+        class WorkoutTracker {
+            constructor() {
+                this.currentDay = "Day 1";
+                this.editMode = false;
+                this.workoutPlan = JSON.parse(localStorage.getItem("customWorkoutPlan")) || JSON.parse(JSON.stringify(defaultWorkoutPlan));
+                this.logs = JSON.parse(localStorage.getItem("workoutLogs")) || {};
+                this.init();
+            }
+
+            init() {
+                this.renderEditMode();
+                this.renderDaySelector();
+                this.renderWorkout();
+                this.renderStats();
+            }
+
+            toggleEditMode() {
+                this.editMode = !this.editMode;
+                this.init();
+            }
+
+            renderEditMode() {
+                const editSection = document.getElementById("editModeSection");
+                
+                if (!this.editMode) {
+                    editSection.innerHTML = "";
+                    return;
+                }
+
+                let html = `<div class="edit-mode">
+                    <div class="edit-mode-header">
+                        ✏️ Edit Workout Plan
+                        <button class="cancel-edit-btn" style="width: auto; padding: 0.5rem 1rem; background: #999;" onclick="tracker.toggleEditMode()">✕ Close</button>
+                    </div>`;
+
+                Object.keys(this.workoutPlan).forEach(day => {
+                    const workout = this.workoutPlan[day];
+                    html += `<h3 style="margin: 1.5rem 0 1rem 0; color: #185FA5; font-size: 16px;">${day}: ${workout.title}</h3>`;
+
+                    workout.exercises.forEach((ex, idx) => {
+                        html += `
+                            <div class="edit-exercise">
+                                <label style="font-size: 12px; color: #666; font-weight: 600;">Exercise Name</label>
+                                <input type="text" id="ex-name-${day}-${idx}" value="${ex.name}" />
+                                
+                                <div class="edit-row">
+                                    <div>
+                                        <label style="font-size: 12px; color: #666; font-weight: 600;">Sets</label>
+                                        <input type="number" id="ex-sets-${day}-${idx}" value="${ex.sets}" />
+                                    </div>
+                                    <div>
+                                        <label style="font-size: 12px; color: #666; font-weight: 600;">Reps</label>
+                                        <input type="text" id="ex-reps-${day}-${idx}" value="${ex.reps}" />
+                                    </div>
+                                </div>
+
+                                <label style="font-size: 12px; color: #666; font-weight: 600;">Description</label>
+                                <input type="text" id="ex-desc-${day}-${idx}" value="${ex.desc}" />
+                            </div>
+                        `;
+                    });
+                });
+
+                html += `
+                    <button class="save-changes-btn" onclick="tracker.saveEditedPlan()">💾 Save Changes</button>
+                    <button class="cancel-edit-btn" onclick="tracker.toggleEditMode()">Cancel</button>
+                </div>`;
+
+                editSection.innerHTML = html;
+            }
+
+            saveEditedPlan() {
+                Object.keys(this.workoutPlan).forEach(day => {
+                    this.workoutPlan[day].exercises.forEach((ex, idx) => {
+                        ex.name = document.getElementById(`ex-name-${day}-${idx}`).value;
+                        ex.sets = parseInt(document.getElementById(`ex-sets-${day}-${idx}`).value);
+                        ex.reps = document.getElementById(`ex-reps-${day}-${idx}`).value;
+                        ex.desc = document.getElementById(`ex-desc-${day}-${idx}`).value;
+                    });
+                });
+
+                localStorage.setItem("customWorkoutPlan", JSON.stringify(this.workoutPlan));
+                this.editMode = false;
+                this.init();
+                alert("✅ Workout plan updated!");
+            }
+
+            renderDaySelector() {
+                const selector = document.getElementById("daySelector");
+                selector.innerHTML = Object.keys(this.workoutPlan).map(day => 
+                    `<button class="day-btn ${day === this.currentDay ? 'active' : ''}" onclick="tracker.selectDay('${day}')">${day}</button>`
+                ).join("");
+            }
+
+            selectDay(day) {
+                this.currentDay = day;
+                this.init();
+            }
+
+            renderWorkout() {
+                const workout = this.workoutPlan[this.currentDay];
+                const content = document.getElementById("workoutContent");
+
+                let html = `<div class="workout-card">
+                    <div class="workout-day-title">${this.currentDay}: ${workout.title}</div>
+                    <p style="font-size: 13px; color: #666; margin-bottom: 1.5rem;">Focus: ${workout.focus}</p>`;
+
+                workout.exercises.forEach((ex, exIdx) => {
+                    const dayLogs = this.logs[this.currentDay] || {};
+                    const exLogs = dayLogs[exIdx] || [];
+
+                    html += `
+                        <div class="exercise-item">
+                            <div class="exercise-name">${ex.name}</div>
+                            <div class="exercise-meta">${ex.sets} × ${ex.reps} reps — ${ex.desc}</div>
+                            ${exLogs.map((log, logIdx) => `
+                                <div class="set-logged">
+                                    <span>Set ${logIdx + 1}: ${log.weight} lbs × ${log.reps} reps</span>
+                                    <span class="delete-btn" onclick="tracker.deleteLog('${this.currentDay}', ${exIdx}, ${logIdx})">✕</span>
+                                </div>
+                            `).join("")}
+                            <div class="set-input-group">
+                                <div class="input-wrapper">
+                                    <label>Weight (lbs)</label>
+                                    <input type="number" class="weight-${exIdx}" placeholder="0" />
+                                </div>
+                                <div class="input-wrapper">
+                                    <label>Reps</label>
+                                    <input type="number" class="reps-${exIdx}" placeholder="0" />
+                                </div>
+                                <div class="input-wrapper">
+                                    <label>&nbsp;</label>
+                                    <button class="log-btn" onclick="tracker.logSet('${this.currentDay}', ${exIdx})">Log Set</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+                content.innerHTML = html;
+            }
+
+            logSet(day, exIdx) {
+                const weight = document.querySelector(`.weight-${exIdx}`).value;
+                const reps = document.querySelector(`.reps-${exIdx}`).value;
+
+                if (!weight || !reps) {
+                    alert("Please enter weight and reps");
+                    return;
+                }
+
+                if (!this.logs[day]) this.logs[day] = {};
+                if (!this.logs[day][exIdx]) this.logs[day][exIdx] = [];
+
+                this.logs[day][exIdx].push({ weight: parseInt(weight), reps: parseInt(reps) });
+                localStorage.setItem("workoutLogs", JSON.stringify(this.logs));
+
+                document.querySelector(`.weight-${exIdx}`).value = "";
+                document.querySelector(`.reps-${exIdx}`).value = "";
+
+                this.renderWorkout();
+                this.renderStats();
+            }
+
+            deleteLog(day, exIdx, logIdx) {
+                this.logs[day][exIdx].splice(logIdx, 1);
+                localStorage.setItem("workoutLogs", JSON.stringify(this.logs));
+                this.renderWorkout();
+                this.renderStats();
+            }
+
+            renderStats() {
+                const stats = document.getElementById("statsContent");
+                
+                let totalSets = 0;
+                let daysCompleted = new Set();
+
+                Object.keys(this.logs).forEach(day => {
+                    Object.keys(this.logs[day]).forEach(exIdx => {
+                        totalSets += this.logs[day][exIdx].length;
+                    });
+                    daysCompleted.add(day);
+                });
+
+                const motivation = [
+                    "🔥 Every rep brings you closer to your goals!",
+                    "💪 You're building the body and strength you want!",
+                    "🎯 Consistency is key. Keep crushing it!",
+                    "😴 Rest and recovery matter just as much as training!",
+                    "⚡ You've got this! Progress takes time and effort!",
+                    "🌟 Strong is the new sexy. Keep pushing!",
+                    "🚀 Your future self will thank you for this effort!"
+                ];
+
+                stats.innerHTML = `
+                    <div class="stats-section">
+                        <div class="stat-card">
+                            <div class="stat-number">${totalSets}</div>
+                            <div class="stat-label">Sets Logged</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">${daysCompleted.size}</div>
+                            <div class="stat-label">Days Started</div>
+                        </div>
+                    </div>
+                    <div class="motivation">${motivation[Math.floor(Math.random() * motivation.length)]}</div>
+                `;
+            }
+        }
+
+        const tracker = new WorkoutTracker();
+    </script>
+</body>
+</html>
